@@ -24,7 +24,7 @@ DEVICE ?= xilinx_u280_xdma_201920_3
 INTERFACE ?= 0
 DESIGN ?= benchmark
 XCLBIN_NAME ?= vnx_$(DESIGN)_if$(INTERFACE)
-
+PADDING_MODE ?= 2
 
 XSA := $(strip $(patsubst %.xpfm, % , $(shell basename $(DEVICE))))
 TEMP_DIR := _x.$(XSA)
@@ -112,7 +112,7 @@ $(BENCHMARDIR)$(TEMP_DIR)/%.xo: $(BENCHMARDIR)src/*
 	make -C $(BENCHMARDIR) all DEVICE=$(DEVICE) -j3
 
 $(CMACDIR)$(TEMP_DIR)/%.xo:
-	make -C $(CMACDIR) all DEVICE=$(DEVICE) INTERFACE=$(INTERFACE)
+	make -C $(CMACDIR) all DEVICE=$(DEVICE) INTERFACE=$(INTERFACE) PADDING_MODE=$(PADDING_MODE)
 
 $(NETLAYERDIR)$(TEMP_DIR)/%.xo:
 	make -C $(NETLAYERDIR) all DEVICE=$(DEVICE)
