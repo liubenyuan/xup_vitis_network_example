@@ -122,6 +122,12 @@ if {${projPart} eq "xcu55n-fsvh2892-2L-e"} {
       set interface_number 0
     }
   }
+} elseif {${projPart} eq "xczu28dr-ffvg1517-2-e"} {
+  set freerunningclock 100
+  # Possible core_selection CMACE4_X0Y0 and CMACE4_X0Y1
+  set core_selection  CMACE4_X0Y1
+  set group_selection X0Y16~X0Y19
+  set interface_number 1
 } else {
   puts "unknown part"
   return -1
